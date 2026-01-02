@@ -1,0 +1,14 @@
+# Python
+__pycache__/
+*.pyc
+
+# Environment files
+.env
+
+# IDEs
+.vscode/
+.idea/
+
+# Project-specific
+step1-output-image.png
+
