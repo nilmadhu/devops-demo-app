@@ -3,13 +3,20 @@ pipeline {
 
     environment {
         APP_NAME = "devops-demo"
-        NEXUS_REGISTRY = "192.168.49.2:32001"  // Minikube IP + Nexus NodePort
+        NEXUS_REGISTRY = "192.168.49.2:32001"
         NEXUS_REPO = "docker-hosted"
         IMAGE_TAG = "${BUILD_NUMBER}"
         FULL_IMAGE_NAME = "${NEXUS_REGISTRY}/${NEXUS_REPO}/${APP_NAME}:${IMAGE_TAG}"
     }
 
     stages {
+
+        stage('Clean Workspace') {
+            steps {
+                deleteDir()   // ✅ clean everything first
+            }
+        }
+
         stage('Checkout Code') {
             steps {
                 git branch: 'main',
