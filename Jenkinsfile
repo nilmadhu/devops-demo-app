@@ -4,10 +4,7 @@ pipeline {
     environment {
         APP_NAME = "devops-demo"
         NEXUS_REGISTRY = "localhost:32001"
-<<<<<<< HEAD
         NEXUS_REPO = "docker-hosted"
-=======
->>>>>>> 1832b2d (Add Modified-Jenkins pipeline for Docker build and Nexus push)
         IMAGE_TAG = "${BUILD_NUMBER}"
         FULL_IMAGE_NAME = "${NEXUS_REGISTRY}/${APP_NAME}:${IMAGE_TAG}"
     }
