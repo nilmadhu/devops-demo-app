@@ -3,7 +3,7 @@ pipeline {
 
     environment {
         APP_NAME = "devops-demo"
-        NEXUS_REGISTRY = "192.168.49.2:32000"
+        NEXUS_REGISTRY = "localhost:32001"
         NEXUS_REPO = "docker-hosted"
         IMAGE_TAG = "${BUILD_NUMBER}"
         FULL_IMAGE_NAME = "${NEXUS_REGISTRY}/${NEXUS_REPO}/${APP_NAME}:${IMAGE_TAG}"
