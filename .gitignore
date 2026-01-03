@@ -12,3 +12,5 @@ __pycache__/
 # Project-specific
 step1-output-image.png
 
+#Jenknis-k8s-Deployment-file
+jenkins-deployment.yaml

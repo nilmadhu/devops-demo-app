@@ -3,10 +3,10 @@ pipeline {
 
     environment {
         APP_NAME = "devops-demo"
-        NEXUS_REGISTRY = "localhost:32001"
+        NEXUS_REGISTRY = "10.104.8.101:32001" // your Nexus NodePort
         NEXUS_REPO = "docker-hosted"
         IMAGE_TAG = "${BUILD_NUMBER}"
-        FULL_IMAGE_NAME = "${NEXUS_REGISTRY}/${APP_NAME}:${IMAGE_TAG}"
+        FULL_IMAGE_NAME = "${NEXUS_REGISTRY}/${NEXUS_REPO}/${APP_NAME}:${IMAGE_TAG}"
     }
 
     stages {
@@ -28,12 +28,12 @@ pipeline {
         stage('Docker Login to Nexus') {
             steps {
                 withCredentials([usernamePassword(
-                    credentialsId: 'nexus-docker-credentials',
-                    usernameVariable: 'NEXUS_USER',
+                    credentialsId: 'nexus-docker-credentials', 
+                    usernameVariable: 'NEXUS_USER', 
                     passwordVariable: 'NEXUS_PASS'
                 )]) {
                     sh '''
-                      echo "$NEXUS_PASS" | docker login ${NEXUS_REGISTRY} -u "$NEXUS_USER" --password-stdin
+                      echo $NEXUS_PASS | docker login ${NEXUS_REGISTRY} -u $NEXUS_USER --password-stdin
                     '''
                 }
             }
